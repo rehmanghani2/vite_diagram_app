@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { User, Brain, Database, MapPin, Bell, Shield, Image, FileText, BarChart3, Settings } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+type CategoryId = 'all' | 'user' | 'ai' | 'service' | 'model';
+type ClassColor = 'blue' | 'purple' | 'green' | 'amber';
+
+type ClassDefinition = {
+  name: string;
+  type: string;
+  attributes: string[];
+  methods: string[];
+  icon: LucideIcon;
+  color: ClassColor;
+};
 
 const SystemClassDiagram = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState<CategoryId>('all');
 
-  const categories = [
+  const categories: Array<{ id: CategoryId; name: string; color: string }> = [
     { id: 'all', name: 'All Classes', color: 'slate' },
     { id: 'user', name: 'User Management', color: 'blue' },
     { id: 'ai', name: 'AI Processing', color: 'purple' },
@@ -12,7 +25,7 @@ const SystemClassDiagram = () => {
     { id: 'model', name: 'Data Models', color: 'amber' }
   ];
 
-  const classes = {
+  const classes: Record<Exclude<CategoryId, 'all'>, ClassDefinition[]> = {
     // User Management Classes
     user: [
       {
@@ -390,7 +403,7 @@ const SystemClassDiagram = () => {
     { from: 'User', to: 'UserRole', type: 'has', label: 'assigned' }
   ];
 
-  const getFilteredClasses = () => {
+  const getFilteredClasses = (): ClassDefinition[] => {
     if (selectedCategory === 'all') {
       return Object.values(classes).flat();
     }
@@ -428,9 +441,9 @@ const SystemClassDiagram = () => {
 
         {/* Class Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {filteredClasses.map((cls, index) => {
+          {filteredClasses.map((cls: ClassDefinition) => {
             const IconComponent = cls.icon;
-            const colorClasses = {
+            const colorClasses: Record<ClassColor, string> = {
               blue: 'from-blue-500 to-blue-600 border-blue-400',
               purple: 'from-purple-500 to-purple-600 border-purple-400',
               green: 'from-green-500 to-green-600 border-green-400',
@@ -439,7 +452,7 @@ const SystemClassDiagram = () => {
 
             return (
               <div
-                key={index}
+                key={cls.name}
                 className="bg-white rounded-lg shadow-lg border-2 overflow-hidden transition-transform hover:scale-105"
               >
                 {/* Class Header */}

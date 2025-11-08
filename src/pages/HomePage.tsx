@@ -11,19 +11,19 @@ function HomePage() {
         Architecture Diagram
       </Link>
       <br></br>
-      <Link to="/layered_architecture">
+      <Link className='font-bold text-2xl text-green-400 underline' to="/layered_architecture">
         Layered Architecture Diagram
       </Link>
       <br></br>
-       <Link to="/module_diagram">
+       <Link className='font-bold text-2xl text-green-400 underline' to="/module_diagram">
         Module Interaction Diagram
       </Link>
       <br></br>
-      <Link to="/class_diagram">
+      <Link className='font-bold text-2xl text-green-400 underline' to="/class_diagram">
         System Class Diagram
       </Link>
       <br></br>
-      <Link to="/activity_diagram">
+      <Link className='font-bold text-2xl text-green-400 underline' to="/activity_diagram">
         Activity Diagram
       </Link>
       </div>

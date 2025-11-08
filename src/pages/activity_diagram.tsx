@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Camera, MapPin, BarChart3, XCircle, AlertTriangle, RefreshCw } from 'lucide-react';
+import { Camera, MapPin, BarChart3, XCircle, AlertTriangle as AlertIcon, RefreshCw } from 'lucide-react';
 
 const ActivityDiagrams = () => {
   const [selectedProcess, setSelectedProcess] = useState('classification');
@@ -138,7 +138,7 @@ const ActivityDiagrams = () => {
                 <div className="flex flex-col items-center">
                   <div className="text-sm font-semibold text-red-600 mb-2">NO</div>
                   <div className="bg-orange-100 border-2 border-orange-400 rounded-lg px-4 py-3 text-center shadow-sm">
-                    <AlertTriangle className="w-6 h-6 text-orange-600 mx-auto mb-1" />
+                    <AlertIcon className="w-6 h-6 text-orange-600 mx-auto mb-1" />
                     <div className="font-semibold text-orange-800">Return Error</div>
                     <div className="text-xs text-orange-700 mt-1">Image too blurry</div>
                   </div>
@@ -341,7 +341,7 @@ const ActivityDiagrams = () => {
                 <div className="flex flex-col items-center">
                   <div className="text-sm font-semibold text-orange-600 mb-2">NO</div>
                   <div className="bg-orange-100 border-2 border-orange-400 rounded-lg px-4 py-3 text-center shadow-sm">
-                    <AlertTriangle className="w-6 h-6 text-orange-600 mx-auto mb-1" />
+                    <AlertIcon className="w-6 h-6 text-orange-600 mx-auto mb-1" />
                     <div className="font-semibold text-orange-800">Show Message</div>
                     <div className="text-xs text-orange-700 mt-1">No bins nearby</div>
                   </div>
