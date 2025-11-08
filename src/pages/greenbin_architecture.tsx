@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { Database, Cloud, Smartphone, Monitor, Cpu, Lock, Zap, Bell, MapPin, BarChart3, Image, Brain, FileText } from 'lucide-react';
 
 const ArchitectureDiagram = () => {
