@@ -1,8 +1,29 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Camera, Upload, Shield, Image, Brain, Database, MapPin, Bell, FileText, BarChart3, CheckCircle, AlertCircle } from 'lucide-react';
 
+const colorMap = {
+  blue: 'bg-blue-100 border-blue-400 text-blue-800',
+  green: 'bg-green-100 border-green-400 text-green-800',
+  purple: 'bg-purple-100 border-purple-400 text-purple-800',
+  indigo: 'bg-indigo-100 border-indigo-400 text-indigo-800',
+  amber: 'bg-amber-100 border-amber-400 text-amber-800'
+} as const;
+
+type FlowStep = {
+  step: number;
+  module: string;
+  action: string;
+  color: keyof typeof colorMap;
+};
+
+type Flows = {
+  classification: FlowStep[];
+  binLocator: FlowStep[];
+  analytics: FlowStep[];
+};
+
 const ModuleInteractionDiagram = () => {
-  const [activeFlow, setActiveFlow] = useState('classification');
+  const [activeFlow, setActiveFlow] = useState<keyof Flows>('classification');
 
   const flows = {
     classification: [
@@ -33,14 +54,6 @@ const ModuleInteractionDiagram = () => {
       { step: 5, module: 'Analytics Service', action: 'Compute metrics', color: 'green' },
       { step: 6, module: 'Admin Dashboard', action: 'Render charts', color: 'blue' }
     ]
-  };
-
-  const colorMap = {
-    blue: 'bg-blue-100 border-blue-400 text-blue-800',
-    green: 'bg-green-100 border-green-400 text-green-800',
-    purple: 'bg-purple-100 border-purple-400 text-purple-800',
-    indigo: 'bg-indigo-100 border-indigo-400 text-indigo-800',
-    amber: 'bg-amber-100 border-amber-400 text-amber-800'
   };
 
   return (
@@ -97,7 +110,7 @@ const ModuleInteractionDiagram = () => {
           </h2>
 
           <div className="space-y-4">
-            {flows[activeFlow].map((item, index) => (
+            {(flows[activeFlow] as FlowStep[]).map((item, index) => (
               <div key={index} className="flex items-center gap-4">
                 {/* Step Number */}
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 text-white flex items-center justify-center font-bold text-lg shadow-lg">

@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { Layers, ArrowDown, Database, Server, Monitor, Smartphone } from 'lucide-react';
 
 const LayeredArchitecture = () => {

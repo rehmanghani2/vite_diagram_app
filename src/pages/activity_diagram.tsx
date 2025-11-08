@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Camera, MapPin, BarChart3, CheckCircle, XCircle, AlertTriangle, RefreshCw } from 'lucide-react';
+import { useState } from 'react';
+import { Camera, MapPin, BarChart3, XCircle, AlertTriangle, RefreshCw } from 'lucide-react';
 
 const ActivityDiagrams = () => {
   const [selectedProcess, setSelectedProcess] = useState('classification');
