@@ -26,6 +26,10 @@ function HomePage() {
       <Link className='font-bold text-2xl text-green-400 underline' to="/activity_diagram">
         Activity Diagram
       </Link>
+      <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/sequence_diagram">
+        Sequence Diagram
+      </Link>
       </div>
     </div>
   );
