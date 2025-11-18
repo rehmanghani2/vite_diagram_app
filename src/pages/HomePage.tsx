@@ -34,6 +34,14 @@ function HomePage() {
       <Link className='font-bold text-2xl text-green-400 underline' to="/deployment_diagram">
         Deployment Diagram
       </Link>
+      <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/state_transition_diagram">
+        State Transition Diagram
+      </Link>
+      <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/enhanced_class_diagram">
+        Enhanced Class Diagram
+      </Link>
       </div>
     </div>
   );
