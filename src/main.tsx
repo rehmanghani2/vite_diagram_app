@@ -15,7 +15,7 @@ import SequenceDiagram from './pages/SequenceDigram.tsx'
 import DeploymentDiagram from './pages/DeploymentDiagram.tsx'
 import StateTransitionDiagram from './pages/StateTransitionDiagram.tsx'
 import EnhancedClassDiagram from './pages/EnhancedClassDiagram.tsx'
-
+import UseCaseDiagram from './pages/UseCaseDiagram.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -33,6 +33,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path='deployment_diagram' element={<DeploymentDiagram />} />
       <Route path='state_transition_diagram' element={<StateTransitionDiagram />}/>
       <Route path='enhanced_class_diagram' element={<EnhancedClassDiagram />} />
+      <Route path='use_case_diagram' element={<UseCaseDiagram />} />
 
     </Routes>
     </BrowserRouter>

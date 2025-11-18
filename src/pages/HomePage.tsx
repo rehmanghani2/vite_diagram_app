@@ -42,6 +42,10 @@ function HomePage() {
       <Link className='font-bold text-2xl text-green-400 underline' to="/enhanced_class_diagram">
         Enhanced Class Diagram
       </Link>
+      <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/use_case_diagram">
+        Use Case Diagram
+      </Link>
       </div>
     </div>
   );
