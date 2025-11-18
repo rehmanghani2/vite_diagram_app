@@ -12,6 +12,7 @@ import SystemClassDiagram from './pages/system_class_diagram.tsx';
 import HomePage from './pages/HomePage.tsx'
 import ActivityDiagrams from './pages/activity_diagram.tsx'
 import SequenceDiagram from './pages/SequenceDigram.tsx'
+import DeploymentDiagram from './pages/DeploymentDiagram.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path='class_diagram' element={<SystemClassDiagram />} />
       <Route path='activity_diagram' element={<ActivityDiagrams />} />
       <Route path='sequence_diagram' element={<SequenceDiagram />} />
+      <Route path='deployment_diagram' element={<DeploymentDiagram />} />
 
     </Routes>
     </BrowserRouter>
