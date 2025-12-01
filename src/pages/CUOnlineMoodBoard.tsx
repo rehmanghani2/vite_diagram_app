@@ -1,30 +1,8 @@
+import { useEffect } from 'react';
 import type { ReactNode } from 'react';
 
 const CUMoodboard = () => {
-  // Custom Styles for patterns and specific gradients that are complex in Tailwind
-  const styles = {
-    pattern1: {
-      backgroundImage: `
-        linear-gradient(45deg, #3498db25 25%, transparent 25%),
-        linear-gradient(-45deg, #3498db25 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #3498db25 75%),
-        linear-gradient(-45deg, transparent 75%, #3498db25 75%)
-      `,
-      backgroundSize: '20px 20px',
-      backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
-      backgroundColor: '#ecf0f1',
-    },
-    pattern3: {
-      backgroundImage: `repeating-linear-gradient(90deg, #3498db, #3498db 10px, #2ecc71 10px, #2ecc71 20px)`,
-      opacity: 0.2,
-      backgroundColor: 'white',
-    },
-    pattern4: {
-      backgroundImage: `radial-gradient(circle, #3498db 1px, transparent 1px)`,
-      backgroundSize: '20px 20px',
-      backgroundColor: '#ecf0f1',
-    },
-  };
+  // Pattern styles moved to global CSS classes (`cu-pattern1`, `cu-pattern3`, `cu-pattern4`).
 
   return (
     <div className="min-h-screen p-6 font-sans bg-gradient-to-br from-[#667eea] to-[#764ba2]">
@@ -74,10 +52,10 @@ const CUMoodboard = () => {
           {/* Patterns & Textures */}
           <Section title="🎭 Patterns & Textures">
             <div className="grid grid-cols-2 gap-4">
-              <div style={styles.pattern1} className="h-32 rounded-xl flex items-center justify-center text-[#2c3e50] font-bold shadow-sm hover:scale-105 transition-transform">Subtle Grid</div>
+              <div className="h-32 rounded-xl flex items-center justify-center text-[#2c3e50] font-bold shadow-sm hover:scale-105 transition-transform cu-pattern1">Subtle Grid</div>
               <div className="h-32 rounded-xl flex items-center justify-center text-white font-bold bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-sm hover:scale-105 transition-transform">Gradient</div>
-              <div style={styles.pattern4} className="h-32 rounded-xl flex items-center justify-center text-[#2c3e50] font-bold shadow-sm hover:scale-105 transition-transform">Dots Pattern</div>
-              <div style={styles.pattern3} className="h-32 rounded-xl flex items-center justify-center text-[#2c3e50] font-bold shadow-sm hover:scale-105 transition-transform">Stripes</div>
+              <div className="h-32 rounded-xl flex items-center justify-center text-[#2c3e50] font-bold shadow-sm hover:scale-105 transition-transform cu-pattern4">Dots Pattern</div>
+              <div className="h-32 rounded-xl flex items-center justify-center text-[#2c3e50] font-bold shadow-sm hover:scale-105 transition-transform cu-pattern3">Stripes</div>
             </div>
           </Section>
 
@@ -140,15 +118,27 @@ const Section = ({ title, children }: SectionProps) => (
   </div>
 );
 
-const ColorBox = ({ color, name, textColor = 'white' }: ColorBoxProps) => (
-  <div 
-    className="h-24 rounded-xl flex flex-col justify-center items-center font-bold shadow-md hover:scale-105 transition-transform"
-    style={{ backgroundColor: color, color: textColor }}
-  >
-    <span>{color}</span>
-    <span className="text-xs font-normal mt-1 opacity-90">{name}</span>
-  </div>
-);
+const ColorBox = ({ color, name, textColor = 'white' }: ColorBoxProps) => {
+  const safeName = color.replace(/[^a-zA-Z0-9]/g, '');
+  const dynamicClass = `cu-dyn-bg-${safeName}`;
+
+  useEffect(() => {
+    const styleId = `cu-style-${dynamicClass}`;
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement('style');
+      style.id = styleId;
+      style.innerHTML = `.${dynamicClass} { background-color: ${color}; color: ${textColor}; }`;
+      document.head.appendChild(style);
+    }
+  }, [dynamicClass, color, textColor]);
+
+  return (
+    <div className={`h-24 rounded-xl flex flex-col justify-center items-center font-bold shadow-md hover:scale-105 transition-transform ${dynamicClass}`}>
+      <span>{color}</span>
+      <span className="text-xs font-normal mt-1 opacity-90">{name}</span>
+    </div>
+  );
+};
 
 const FontSample = ({ title, sample, className }: FontSampleProps) => (
   <div className="p-4 bg-white rounded-lg border-l-4 border-[#3498db] shadow-sm">
