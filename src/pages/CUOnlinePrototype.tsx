@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
   Home, 
   BookOpen, 
   BarChart2, 
   Calendar, 
   Bell, 
-  User, 
   Search, 
   ChevronRight, 
   CheckCircle, 
-  XCircle, 
   AlertCircle,
   FileText,
-  Clock,
-  Menu
+  Clock
 } from 'lucide-react';
+
+// --- Types ---
+type SidebarProps = { activeTab: string; setActiveTab: (id: string) => void };
+type HeaderProps = { title: string };
 
 // --- Components ---
 
 // 1. Sidebar Navigation
-const Sidebar = ({ activeTab, setActiveTab }) => {
+const Sidebar = ({ activeTab, setActiveTab }: SidebarProps) => {
   const menuItems = [
     { id: 'home', label: 'Home', icon: <Home size={20} /> },
     { id: 'registration', label: 'Course Reg', icon: <BookOpen size={20} /> },
@@ -69,7 +70,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
 };
 
 // 2. Top Header
-const Header = ({ title }) => (
+const Header = ({ title }: HeaderProps) => (
   <header className="flex justify-between items-center mb-8">
     <div>
       <h1 className="text-2xl font-bold text-[#003366]">{title}</h1>
@@ -111,7 +112,7 @@ const HomeScreen = () => {
             <h2 className="text-3xl font-bold text-gray-800">85%</h2>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2 mt-4">
-            <div className="bg-emerald-500 h-2 rounded-full" style={{ width: '85%' }}></div>
+            <div className="bg-emerald-500 h-2 rounded-full w-[85%]"></div>
           </div>
           <p className="text-xs text-gray-400 mt-2">Above threshold in 5/6 courses</p>
         </div>
@@ -188,7 +189,7 @@ const RegistrationScreen = () => {
     { id: 4, code: 'MTH231', name: 'Formal Methods', cr: 3, section: 'B', status: 'Open' },
   ]);
 
-  const toggleReg = (id) => {
+  const toggleReg = (id: number) => {
     setCourses(courses.map(c => {
       if (c.id === id && c.status === 'Open') return {...c, status: 'Registered'};
       if (c.id === id && c.status === 'Registered') return {...c, status: 'Open'};
@@ -455,7 +456,7 @@ export default function AppCuOnline() {
         {activeTab === 'attendance' && <AttendanceScreen />}
       </main>
 
-      <style jsx global>{`
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
         
         body {
