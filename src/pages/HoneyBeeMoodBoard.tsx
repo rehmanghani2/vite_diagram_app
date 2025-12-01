@@ -53,6 +53,7 @@ const HoneyBeeMoodBoard = () => {
           font-family: Montserrat, sans-serif;
         }
       `}</style>
+      {/* NA  */}
       {/* --- TOP NAVIGATION --- */}
       <nav className="sticky top-0 z-50 text-white shadow-lg bg-[#212121]">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
