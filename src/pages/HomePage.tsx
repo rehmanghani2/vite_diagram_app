@@ -46,7 +46,30 @@ function HomePage() {
       <Link className='font-bold text-2xl text-green-400 underline' to="/use_case_diagram">
         Use Case Diagram
       </Link>
+      <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/package_diagram">
+        Package Diagram
+      </Link>
+      <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/erd_diagram">
+       ERD Diagram
+      </Link>
       </div>
+      <br></br>
+      <br></br>
+      {/* <Link className='font-bold text-2xl text-green-400 underline' to="/cuonline_prototype">
+       CUOnline Prototype
+      </Link>
+      <br></br>
+      
+      <Link className='font-bold text-2xl text-green-400 underline' to="/cuonline_moodboard">
+       CUOnline MoodBoard
+      </Link>
+      <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/honeybee_moodboard">
+       HoneyBee MoodBoard
+      </Link> */}
+
     </div>
   );
 }

@@ -16,6 +16,11 @@ import DeploymentDiagram from './pages/DeploymentDiagram.tsx'
 import StateTransitionDiagram from './pages/StateTransitionDiagram.tsx'
 import EnhancedClassDiagram from './pages/EnhancedClassDiagram.tsx'
 import UseCaseDiagram from './pages/UseCaseDiagram.tsx'
+// import AppCuOnline from './pages/CUOnlinePrototype.tsx'
+// import CUMoodboard from './pages/CUOnlineMoodBoard.tsx'
+// import HoneyBeeMoodBoard from './pages/HoneyBeeMoodBoard.tsx'
+import PackageDiagram from './pages/PackageDiagram.tsx'
+import ERDDiagram from './pages/ERDDiagram.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -34,6 +39,11 @@ createRoot(document.getElementById('root')!).render(
       <Route path='state_transition_diagram' element={<StateTransitionDiagram />}/>
       <Route path='enhanced_class_diagram' element={<EnhancedClassDiagram />} />
       <Route path='use_case_diagram' element={<UseCaseDiagram />} />
+      {/* <Route path='cuonline_prototype' element={<AppCuOnline />} />
+      <Route path='cuonline_moodboard' element={<CUMoodboard />} />
+      <Route path='honeybee_moodboard' element={<HoneyBeeMoodBoard />} /> */}
+      <Route path='package_diagram' element={<PackageDiagram />} />
+      <Route path='erd_diagram' element={<ERDDiagram />} />
 
     </Routes>
     </BrowserRouter>
