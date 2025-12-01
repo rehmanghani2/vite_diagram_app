@@ -203,7 +203,7 @@ const MoodBoardView = () => {
             </p>
           </div>
 
-     </div>
+        </div>
       </div>
     </div>
   );
