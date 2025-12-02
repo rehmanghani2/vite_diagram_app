@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Palette, 
   Type, 
@@ -11,24 +11,14 @@ import {
 } from 'lucide-react';
 
 // --- TYPE DEFINITIONS ---
-type ScreenProps = { onNavigate: (screen: number) => void };
-type NavItemProps = { icon: string; label: string; active: boolean; onClick: () => void };
-type TimelineItemProps = { icon: string; status: string; desc: string; time: string; completed?: boolean; active?: boolean };
 type MoodSectionProps = { title: string; icon: React.ReactNode; children: React.ReactNode; className?: string };
 type ColorSwatchProps = { color: string; name: string };
 type ImageryCardProps = { icon: string; title: string; desc: string };
 type ProductCardProps = { icon: string; title: string; origin: string; rating: string; price: string; onClick: () => void };
 type CartItemProps = { icon: string; title: string; size: string; price: string };
-
-// --- BRAND CONSTANTS ---
-const COLORS = {
-  honey: { DEFAULT: '#FFC107', light: '#FFD54F', dark: '#FFA000', pale: '#FFF8E1' },
-  charcoal: { DEFAULT: '#212121', light: '#424242' },
-  leaf: { DEFAULT: '#4CAF50', light: '#81C784', dark: '#388E3C' },
-  tech: { DEFAULT: '#03A9F4', light: '#B3E5FC' },
-  cream: '#FFF9E5',
-  creamDark: '#FFE8C5'
-};
+type NavItemProps = { icon: string; label: string; active: boolean; onClick: () => void };
+type TimelineItemProps = { icon: string; status: string; desc: string; time: string; completed?: boolean; active?: boolean };
+type ScreenProps = { onNavigate: (screen: number) => void };
 
 const HoneyBeeMoodBoard = () => {
   const [currentView, setCurrentView] = useState('moodboard');
@@ -97,13 +87,7 @@ const HoneyBeeMoodBoard = () => {
 // --- VIEW 1: MOOD BOARD COMPONENT (Unchanged) ---
 const MoodBoardView = () => {
   return (
-    <div 
-      className="min-h-screen p-6 md:p-12 animate-in fade-in duration-500"
-      style={{ 
-        background: `linear-gradient(135deg, ${COLORS.cream} 0%, ${COLORS.creamDark} 100%)`,
-        fontFamily: 'Georgia, serif' 
-      }}
-    >
+    <div className="moodboard-gradient min-h-screen p-6 md:p-12 animate-in fade-in duration-500">
       <div className="max-w-6xl mx-auto bg-white shadow-2xl rounded-3xl p-8 md:p-12">
         
         {/* Header */}
@@ -575,16 +559,26 @@ const MoodSection = ({ title, icon, children, className = '' }: MoodSectionProps
   </div>
 );
 
-const ColorSwatch = ({ color, name }: ColorSwatchProps) => (
-  <div className="flex-1 min-w-[120px] text-center group">
-    <div 
-      className="h-24 rounded-xl mb-2 shadow-md border-4 border-[#333] transition-transform group-hover:scale-105" 
-      style={{ backgroundColor: color }}
-    ></div>
-    <div className="font-bold text-[#333] text-sm font-sans">{name}</div>
-    <div className="text-gray-500 text-xs font-mono">{color}</div>
-  </div>
-);
+const ColorSwatch = ({ color, name }: ColorSwatchProps) => {
+  useEffect(() => {
+    const swatches = document.querySelectorAll('[data-swatch-color]');
+    swatches.forEach(el => {
+      const c = (el as HTMLElement).getAttribute('data-swatch-color');
+      if (c) (el as HTMLElement).style.backgroundColor = c;
+    });
+  }, [color]);
+
+  return (
+    <div className="flex-1 min-w-[120px] text-center group">
+      <div 
+        className="h-24 rounded-xl mb-2 shadow-md border-4 border-[#333] transition-transform group-hover:scale-105" 
+        data-swatch-color={color}
+      ></div>
+      <div className="font-bold text-[#333] text-sm font-sans">{name}</div>
+      <div className="text-gray-500 text-xs font-mono">{color}</div>
+    </div>
+  );
+};
 
 const ImageryCard = ({ icon, title, desc }: ImageryCardProps) => (
   <div className="p-4 bg-white rounded-xl border-2 border-[#FFE8C5] text-center hover:bg-[#FFF9E5] transition-colors">

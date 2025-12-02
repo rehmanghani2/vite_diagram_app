@@ -51,8 +51,16 @@ function HomePage() {
         Package Diagram
       </Link>
       <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/modified_deployment_diagram">
+       Deployment Diagram Modified
+      </Link>
+      <br></br>
       <Link className='font-bold text-2xl text-green-400 underline' to="/erd_diagram">
        ERD Diagram
+      </Link>
+      <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/system_sequence_diagram">
+       System Sequence Diagram
       </Link>
       </div>
       <br></br>
