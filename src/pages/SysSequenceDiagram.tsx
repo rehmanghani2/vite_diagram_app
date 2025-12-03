@@ -427,7 +427,7 @@ export default function SysSequenceDiagram() {
               ) : (
                 <div 
                   className="min-w-fit min-h-full flex justify-center origin-top-left transition-transform duration-200 ease-out"
-                  style={{ transform: `scale(${zoomLevel})`, transformOrigin: 'top center' }}
+                  data-zoom-level={String(zoomLevel)}
                 >
                   <div ref={mermaidRef} className="mermaid-container bg-white shadow-xl rounded-xl p-8 border border-slate-100">
                     {/* SVG Injected Here */}
@@ -474,7 +474,23 @@ export default function SysSequenceDiagram() {
         .messageText { fill: #1e293b !important; font-size: 14px !important; }
         .noteText { fill: #334155 !important; font-size: 13px !important; }
         .loopText { fill: #475569 !important; font-weight: bold !important; }
+
+        /* Zoom levels (mapped to data-zoom-level attribute set on the wrapper) */
+        [data-zoom-level="0.4"] { transform: scale(0.4); transform-origin: top center; }
+        [data-zoom-level="0.6"] { transform: scale(0.6); transform-origin: top center; }
+        [data-zoom-level="0.8"] { transform: scale(0.8); transform-origin: top center; }
+        [data-zoom-level="1"]   { transform: scale(1);   transform-origin: top center; }
+        [data-zoom-level="1.2"] { transform: scale(1.2); transform-origin: top center; }
+        [data-zoom-level="1.4"] { transform: scale(1.4); transform-origin: top center; }
+        [data-zoom-level="1.6"] { transform: scale(1.6); transform-origin: top center; }
+        [data-zoom-level="1.8"] { transform: scale(1.8); transform-origin: top center; }
+        [data-zoom-level="2"]   { transform: scale(2);   transform-origin: top center; }
+        [data-zoom-level="2.2"] { transform: scale(2.2); transform-origin: top center; }
+        [data-zoom-level="2.4"] { transform: scale(2.4); transform-origin: top center; }
+        [data-zoom-level="2.6"] { transform: scale(2.6); transform-origin: top center; }
+        [data-zoom-level="2.8"] { transform: scale(2.8); transform-origin: top center; }
+        [data-zoom-level="3"]   { transform: scale(3);   transform-origin: top center; }
       `}</style>
     </div>
-  );
-}
+   );
+ }
