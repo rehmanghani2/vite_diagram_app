@@ -1,6 +1,16 @@
 import  { useState, useEffect, useRef } from 'react';
 import { FileText, Code, ZoomIn, ZoomOut, RefreshCw } from 'lucide-react';
 
+// Global type declaration for mermaid (CDN)
+declare global {
+  interface Window {
+    mermaid?: {
+      initialize: (config: Record<string, unknown>) => void;
+      render: (id: string, code: string) => Promise<{ svg: string }>;
+    };
+  }
+}
+
 const DIAGRAM_CODE = `sequenceDiagram
     autonumber
     
@@ -261,8 +271,8 @@ export default function SysSequenceDiagram() {
   const [activeTab, setActiveTab] = useState('diagram');
   const [zoomLevel, setZoomLevel] = useState(1);
   const [isMermaidLoaded, setIsMermaidLoaded] = useState(false);
-  const [renderError, setRenderError] = useState(null);
-  const mermaidRef = useRef(null);
+  const [renderError, setRenderError] = useState<string | null>(null);
+  const mermaidRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     // Dynamically load mermaid from CDN if not already present
@@ -271,22 +281,24 @@ export default function SysSequenceDiagram() {
       script.src = 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js';
       script.onload = () => {
         setIsMermaidLoaded(true);
-        window.mermaid.initialize({
-          startOnLoad: false,
-          theme: 'default',
-          securityLevel: 'loose',
-          sequence: {
-            showSequenceNumbers: true,
-            actorMargin: 50,
-            noteMargin: 10,
-            boxMargin: 10,
-            boxTextMargin: 5,
-            messageMargin: 35,
-            mirrorActors: true,
-            bottomMarginAdj: 1,
-            useMaxWidth: false,
-          }
-        });
+        if (window.mermaid) {
+          window.mermaid.initialize({
+            startOnLoad: false,
+            theme: 'default',
+            securityLevel: 'loose',
+            sequence: {
+              showSequenceNumbers: true,
+              actorMargin: 50,
+              noteMargin: 10,
+              boxMargin: 10,
+              boxTextMargin: 5,
+              messageMargin: 35,
+              mirrorActors: true,
+              bottomMarginAdj: 1,
+              useMaxWidth: false,
+            }
+          });
+        }
         renderDiagram();
       };
       document.body.appendChild(script);
