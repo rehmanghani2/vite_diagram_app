@@ -329,7 +329,7 @@ const DIAGRAM_CODE = `sequenceDiagram
     
     Note over User,Notification: END OF COMPLETE SYSTEM SEQUENCE DIAGRAM`;
 
-export default function SystemSequenceDiagram() {
+export default function SequenceDiagramMod() {
   const [activeTab, setActiveTab] = useState('diagram');
   const [zoomLevel, setZoomLevel] = useState(1);
   const [isMermaidLoaded, setIsMermaidLoaded] = useState(false);

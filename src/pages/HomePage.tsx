@@ -31,6 +31,10 @@ function HomePage() {
         Sequence Diagram
       </Link>
       <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/system_sequence_diagram">
+        System Sequence Diagram
+      </Link>
+      <br></br>
       <Link className='font-bold text-2xl text-green-400 underline' to="/deployment_diagram">
         Deployment Diagram
       </Link>
@@ -59,8 +63,12 @@ function HomePage() {
        ERD Diagram
       </Link>
       <br></br>
-      <Link className='font-bold text-2xl text-green-400 underline' to="/system_sequence_diagram">
-       System Sequence Diagram
+      <Link className='font-bold text-2xl text-green-400 underline' to="/sequence_diagram_mod">
+       Sequence Diagram Modified
+      </Link>
+       <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/sys_sequence_diagram">
+       System Sequence Diagram 
       </Link>
       </div>
       <br></br>

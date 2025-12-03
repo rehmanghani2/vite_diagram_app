@@ -22,7 +22,8 @@ import UseCaseDiagram from './pages/UseCaseDiagram.tsx'
 import PackageDiagram from './pages/PackageDiagram.tsx'
 import ERDDiagram from './pages/ERDDiagram.tsx'
 import DeploymentDiagramMod from './pages/DeploymnetDiagramModiifed.tsx'
-import SystemSequenceDiagram from './pages/SystemSequenceDiagram.tsx';
+import SequenceDiagramMod from './pages/SequenceDiagramMod.tsx'
+import SysSequenceDiagram from './pages/SysSequenceDiagram.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -37,6 +38,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path='class_diagram' element={<SystemClassDiagram />} />
       <Route path='activity_diagram' element={<ActivityDiagrams />} />
       <Route path='sequence_diagram' element={<SequenceDiagram />} />
+      {/* <Route path='system_sequence_diagram' element={<SystemSequenceDiagram />} /> */}
       <Route path='deployment_diagram' element={<DeploymentDiagram />} />
       <Route path='state_transition_diagram' element={<StateTransitionDiagram />}/>
       <Route path='enhanced_class_diagram' element={<EnhancedClassDiagram />} />
@@ -47,7 +49,8 @@ createRoot(document.getElementById('root')!).render(
       <Route path='package_diagram' element={<PackageDiagram />} />
       <Route path='erd_diagram' element={<ERDDiagram />} />
       <Route path='modified_deployment_diagram' element={<DeploymentDiagramMod />} />
-      <Route path='system_sequence_diagram' element={<SystemSequenceDiagram />} />
+      <Route path='sequence_diagram_mod' element={<SequenceDiagramMod />} />
+      <Route path='sys_sequence_diagram' element={<SysSequenceDiagram />} />
 
 
     </Routes>
