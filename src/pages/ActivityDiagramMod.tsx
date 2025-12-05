@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import  { useState, useEffect, useRef } from 'react';
 import { FileText, Code, ZoomIn, ZoomOut, RefreshCw, Layers } from 'lucide-react';
 
 // Global type declaration for mermaid (CDN)
@@ -6,7 +6,7 @@ declare global {
   interface Window {
     mermaid?: {
       initialize: (config: Record<string, unknown>) => void;
-      render: (id: string, code: string, cb?: (svg: string, bind: () => void) => void) => Promise<{ svg: string }>;
+      render: (id: string, code: string) => Promise<{ svg: string }>;
     };
   }
 }
@@ -210,6 +210,7 @@ export default function ActivityDiagramMod() {
   const [isMermaidLoaded, setIsMermaidLoaded] = useState(false);
   const [renderError, setRenderError] = useState<string | null>(null);
   const mermaidRef = useRef<HTMLDivElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
 
   // Dynamic initialization and loading of Mermaid
   useEffect(() => {
@@ -276,6 +277,14 @@ export default function ActivityDiagramMod() {
       // Re-render diagram to ensure max-width is respected if needed, though transform should handle it
       renderDiagram(); 
   };
+
+  // Apply zoom transform programmatically to avoid inline JSX styles
+  useEffect(() => {
+    if (wrapperRef.current) {
+      wrapperRef.current.style.transform = `scale(${zoomLevel})`;
+      wrapperRef.current.style.transformOrigin = 'top center';
+    }
+  }, [zoomLevel]);
 
 
   return (
@@ -367,9 +376,8 @@ export default function ActivityDiagramMod() {
                 </div>
               ) : (
                 <div 
+                  ref={wrapperRef}
                   className="min-w-fit min-h-full flex justify-center origin-top transition-transform duration-200 ease-out"
-                  style={{ transform: `scale(${zoomLevel})` }}
-                  data-zoom-level={String(zoomLevel)}
                 >
                   <div ref={mermaidRef} className="mermaid-container bg-white shadow-xl rounded-xl p-8 border border-slate-100">
                     {/* SVG Injected Here */}
