@@ -34,11 +34,11 @@ function HomePage() {
       <Link className='font-bold text-2xl text-green-400 underline' to="/system_sequence_diagram">
         System Sequence Diagram
       </Link> */}
-      <br></br>
+      {/* <br></br>
       <Link className='font-bold text-2xl text-green-400 underline' to="/deployment_diagram">
         Deployment Diagram
       </Link>
-      <br></br>
+      <br></br> */}
       <Link className='font-bold text-2xl text-green-400 underline' to="/state_transition_diagram">
         State Transition Diagram
       </Link>
