@@ -24,6 +24,8 @@ import ERDDiagram from './pages/ERDDiagram.tsx'
 import DeploymentDiagramMod from './pages/DeploymnetDiagramModiifed.tsx'
 import SequenceDiagramMod from './pages/SequenceDiagramMod.tsx'
 import SysSequenceDiagram from './pages/SysSequenceDiagram.tsx'
+import ActivityDiagramMod from './pages/ActivityDiagramMod.tsx'
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -51,6 +53,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path='modified_deployment_diagram' element={<DeploymentDiagramMod />} />
       <Route path='sequence_diagram_mod' element={<SequenceDiagramMod />} />
       <Route path='sys_sequence_diagram' element={<SysSequenceDiagram />} />
+      <Route path='activity_diagram_mod' element={<ActivityDiagramMod />} />  
 
 
     </Routes>

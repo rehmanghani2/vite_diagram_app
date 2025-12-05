@@ -27,13 +27,13 @@ function HomePage() {
         Activity Diagram
       </Link>
       <br></br>
-      <Link className='font-bold text-2xl text-green-400 underline' to="/sequence_diagram">
+      {/* <Link className='font-bold text-2xl text-green-400 underline' to="/sequence_diagram">
         Sequence Diagram
-      </Link>
-      <br></br>
+      </Link> */}
+      {/* <br></br>
       <Link className='font-bold text-2xl text-green-400 underline' to="/system_sequence_diagram">
         System Sequence Diagram
-      </Link>
+      </Link> */}
       <br></br>
       <Link className='font-bold text-2xl text-green-400 underline' to="/deployment_diagram">
         Deployment Diagram
@@ -58,10 +58,10 @@ function HomePage() {
       <Link className='font-bold text-2xl text-green-400 underline' to="/modified_deployment_diagram">
        Deployment Diagram Modified
       </Link>
-      <br></br>
+      {/* <br></br>
       <Link className='font-bold text-2xl text-green-400 underline' to="/erd_diagram">
        ERD Diagram
-      </Link>
+      </Link> */}
       <br></br>
       <Link className='font-bold text-2xl text-green-400 underline' to="/sequence_diagram_mod">
        Sequence Diagram Modified
@@ -69,6 +69,10 @@ function HomePage() {
        <br></br>
       <Link className='font-bold text-2xl text-green-400 underline' to="/sys_sequence_diagram">
        System Sequence Diagram 
+      </Link>
+       <br></br>
+      <Link className='font-bold text-2xl text-green-400 underline' to="/activity_diagram_mod">
+      System Activity Diagram  
       </Link>
       </div>
       <br></br>
